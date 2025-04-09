@@ -19,4 +19,4 @@ For more details, refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 Author: Bony Yamin  
 GitHub: [https://github.com/bonyyamin](https://github.com/bonyyamin)  
-Email: bony@example.com
+Email: bonyyamin@gmail.com
