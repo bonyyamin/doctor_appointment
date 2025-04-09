@@ -1,16 +1,59 @@
-# doctor_appointment
+# Doctor Appointment App
 
-A new Flutter project.
+Doctor Appointment App is a Flutter-based application that allows users to book appointments with doctors, track their medical history, and communicate with healthcare providers. The app provides a seamless experience for managing healthcare needs.
+
+## Features
+
+- **Onboarding**: Introduces the app's features to new users.
+- **Authentication**: Sign up and log in securely.
+- **Home Screen**: Browse doctors by category and specialty.
+- **Appointment Booking**: Book appointments with doctors and view appointment details.
+- **Messaging**: Chat with doctors or healthcare providers.
+- **Profile Management**: View and edit user profile and medical history.
+
+## Screenshots
+
+![Onboarding](assets/screenshots/onboarding.png)
+![Home Screen](assets/screenshots/home_screen.png)
+![Appointment Booking](assets/screenshots/appointment_booking.png)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK (version 3.7.2 or higher)
+- Android Studio or Visual Studio Code
+- A device or emulator to run the app
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/bonyyamin/doctor_appointment.git
+   cd doctor_appointment
+   flutter pub get
+   ```
+2. Install dependencies:
+```sh
+flutter pub get
+```
+3. Run the app:
+   ```sh
+   flutter run
+   ```
+
+### Project Structure
+
+```markdown
+lib/
+├── feature/
+│   ├── auth/
+│   ├── appointments/
+│   ├── doctor/
+│   ├── home/
+│   ├── message/
+│   ├── onboarding/
+│   └── profile/
+├── models/
+└── widgets/
+```
