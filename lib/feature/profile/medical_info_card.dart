@@ -4,7 +4,7 @@ import '../models/user_model.dart';
 class MedicalInfoCard extends StatelessWidget {
   final UserModel user;
 
-  MedicalInfoCard({required this.user});
+  const MedicalInfoCard({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {

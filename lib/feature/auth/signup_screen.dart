@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
   @override
-  _SignupScreenState createState() => _SignupScreenState();
+  SignupScreenState createState() => SignupScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -118,7 +120,6 @@ class _SignupScreenState extends State<SignupScreen> {
               /// Signup Button
               ElevatedButton(
                 onPressed: _signup,
-                child: Text("Sign Up", style: TextStyle(fontSize: 18)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   shape: RoundedRectangleBorder(
@@ -127,6 +128,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding: EdgeInsets.symmetric(vertical: 16),
                   minimumSize: Size(double.infinity, 50),
                 ),
+                child: Text("Sign Up", style: TextStyle(fontSize: 18)),
               ),
               SizedBox(height: 20),
 

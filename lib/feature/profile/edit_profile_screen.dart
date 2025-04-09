@@ -4,13 +4,13 @@ import '../models/user_model.dart';
 class EditProfileScreen extends StatefulWidget {
   final UserModel user;
 
-  EditProfileScreen({required this.user});
+  const EditProfileScreen({super.key, required this.user});
 
   @override
-  _EditProfileScreenState createState() => _EditProfileScreenState();
+  EditProfileScreenState createState() => EditProfileScreenState();
 }
 
-class _EditProfileScreenState extends State<EditProfileScreen> {
+class EditProfileScreenState extends State<EditProfileScreen> {
   late TextEditingController _nameController;
   late TextEditingController _contactController;
   late TextEditingController _addressController;
@@ -44,17 +44,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         child: Column(
           children: [
             TextField(
-                controller: _nameController,
-                decoration: InputDecoration(labelText: "Full Name")),
+              controller: _nameController,
+              decoration: InputDecoration(labelText: "Full Name"),
+            ),
             TextField(
-                controller: _contactController,
-                decoration: InputDecoration(labelText: "Contact")),
+              controller: _contactController,
+              decoration: InputDecoration(labelText: "Contact"),
+            ),
             TextField(
-                controller: _addressController,
-                decoration: InputDecoration(labelText: "Address")),
+              controller: _addressController,
+              decoration: InputDecoration(labelText: "Address"),
+            ),
             SizedBox(height: 20),
             ElevatedButton(
-                onPressed: _saveChanges, child: Text("Save Changes")),
+              onPressed: _saveChanges,
+              child: Text("Save Changes"),
+            ),
           ],
         ),
       ),

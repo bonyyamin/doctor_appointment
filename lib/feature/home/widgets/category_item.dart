@@ -6,7 +6,7 @@ class CategoryItemWidget extends StatefulWidget {
   final String selectedCategory;
   final Function(String) onCategorySelected;
 
-  CategoryItemWidget({
+  const CategoryItemWidget({super.key, 
     required this.icon,
     required this.title,
     required this.selectedCategory,
@@ -14,10 +14,10 @@ class CategoryItemWidget extends StatefulWidget {
   });
 
   @override
-  _CategoryItemWidgetState createState() => _CategoryItemWidgetState();
+  CategoryItemWidgetState createState() => CategoryItemWidgetState();
 }
 
-class _CategoryItemWidgetState extends State<CategoryItemWidget> {
+class CategoryItemWidgetState extends State<CategoryItemWidget> {
   @override
   Widget build(BuildContext context) {
     bool isSelected = widget.selectedCategory == widget.title;

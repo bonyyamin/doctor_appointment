@@ -5,7 +5,7 @@ class DoctorCardWidget extends StatelessWidget {
   final String specialty;
   final String imagePath;
 
-  const DoctorCardWidget({
+  const DoctorCardWidget({super.key, 
     required this.name,
     required this.specialty,
     required this.imagePath,

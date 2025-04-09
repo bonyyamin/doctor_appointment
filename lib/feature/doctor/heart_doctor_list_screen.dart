@@ -20,6 +20,8 @@ class HeartDoctorListScreen extends StatelessWidget {
     },
   ];
 
+   HeartDoctorListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

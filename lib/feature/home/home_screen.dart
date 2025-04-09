@@ -7,11 +7,13 @@ import 'widgets/category_item.dart';
 import 'widgets/doctor_card.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   String selectedCategory =
       "Heart"; // Default category to show heart specialists
@@ -54,11 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
 // Extracted Home Page Content
 class HomeScreenContent extends StatefulWidget {
+  const HomeScreenContent({super.key});
   @override
-  _HomeScreenContentState createState() => _HomeScreenContentState();
+  HomeScreenContentState createState() => HomeScreenContentState();
 }
 
-class _HomeScreenContentState extends State<HomeScreenContent> {
+class HomeScreenContentState extends State<HomeScreenContent> {
   String selectedCategory = "Heart";
 
   final List<Map<String, String>> doctors = [
