@@ -1,13 +1,15 @@
+import 'package:doctor_appointment/feature/auth/login_screen.dart';
+import 'package:doctor_appointment/feature/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  _OnboardingScreenState createState() => _OnboardingScreenState();
+  OnboardingScreenState createState() => OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
 
@@ -29,17 +31,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     },
   ];
 
-  void _goToHome() {}
+void _goToLogin() {
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(
+      builder: (_) => LoginScreen(), // Navigates to the LoginScreen widget
+    ),
+    (route) => false, // This ensures no route is kept in the stack
+  );
+}
+
+void _goToHome() {
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(
+      builder: (_) => HomeScreen(), // Navigates to the HomeScreen widget
+    ),
+    (route) => false, // Ensures no route is kept in the stack
+  );
+}
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Widget _buildPage(Map<String, String> data) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(data['image']!, height: 250),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
         Text(
           data['title']!,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -56,62 +82,71 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: _pages.length,
-              onPageChanged: (index) => setState(() => _currentIndex = index),
-              itemBuilder: (_, index) => _buildPage(_pages[index]),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: TextButton(
+                onPressed: _goToHome,
+                child: const Text('Skip'),
+              ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              _pages.length,
-              (index) => Container(
-                margin: EdgeInsets.symmetric(horizontal: 4),
-                width: _currentIndex == index ? 12 : 8,
-                height: _currentIndex == index ? 12 : 8,
-                decoration: BoxDecoration(
-                  color: _currentIndex == index ? Colors.blue : Colors.grey,
-                  shape: BoxShape.circle,
+            Expanded(
+              child: PageView.builder(
+                controller: _controller,
+                itemCount: _pages.length,
+                onPageChanged: (index) => setState(() => _currentIndex = index),
+                itemBuilder: (_, index) => _buildPage(_pages[index]),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                _pages.length,
+                (index) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: _currentIndex == index ? 12 : 8,
+                  height: _currentIndex == index ? 12 : 8,
+                  decoration: BoxDecoration(
+                    color: _currentIndex == index ? Colors.blue : Colors.grey,
+                    shape: BoxShape.circle,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 24),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_currentIndex == _pages.length - 1) {
-                        _goToHome();
-                      } else {
-                        _controller.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        );
-                      }
-                    },
-                    child: Text(
-                      _currentIndex == _pages.length - 1
-                          ? "Get Started"
-                          : "Next",
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50),
+            const SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_currentIndex == _pages.length - 1) {
+                          _goToLogin(); // Navigate to LoginScreen
+                        } else {
+                          _controller.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn,
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(double.infinity, 50),
+                      ),
+                      child: Text(
+                        _currentIndex == _pages.length - 1
+                            ? "Get Started"
+                            : "Next",
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
