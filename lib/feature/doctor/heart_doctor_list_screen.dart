@@ -5,7 +5,7 @@ class HeartDoctorListScreen extends StatelessWidget {
     {
       "name": "Dr. Selkon Kane",
       "specialty": "Heart Surgeon",
-      "image": "assets/doctor_1.jpg",
+      "image": "assets/images/doctor/doctor_1.jpg",
       "available": "Available Now",
       "fee": "1000tk",
       "feeTitle": "Consultation Fee"
@@ -13,7 +13,7 @@ class HeartDoctorListScreen extends StatelessWidget {
     {
       "name": "Dr. Watson Mushef",
       "specialty": "Heart Specialist",
-      "image": "assets/doctor_2.jpg",
+      "image": "assets/images/doctor/doctor_2.jpg",
       "available": "Available Now",
       "fee": "1000tk",
       "feeTitle": "Consultation Fee"

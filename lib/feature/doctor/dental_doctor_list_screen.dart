@@ -5,7 +5,7 @@ class DentalDoctorListScreen extends StatelessWidget {
     {
       "name": "Dr. Robert Brown",
       "specialty": "Orthodontist",
-      "image": "assets/doctor_3.jpg",
+      "image": "assets/images/doctor/doctor_3.jpg",
       "available": "Available Now",
       "fee": "1000tk",
       "feeTitle": "Consultation Fee"
@@ -13,7 +13,7 @@ class DentalDoctorListScreen extends StatelessWidget {
     {
       "name": "Dr. Alice Johnson",
       "specialty": "Dental Surgeon",
-      "image": "assets/doctor_4.jpg",
+      "image": "assets/images/doctor/doctor_4.jpg",
       "available": "Available Now",
       "fee": "1000tk",
       "feeTitle": "Consultation Fee"

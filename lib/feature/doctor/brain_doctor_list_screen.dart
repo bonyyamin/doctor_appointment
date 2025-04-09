@@ -1,3 +1,4 @@
+import 'package:doctor_appointment/feature/appointments/book_appointment/book_appointment_screen.dart';
 import 'package:flutter/material.dart';
 
 class BrainDoctorListScreen extends StatelessWidget {
@@ -5,18 +6,18 @@ class BrainDoctorListScreen extends StatelessWidget {
     {
       "name": "Dr. Michael Lee",
       "specialty": "Neurosurgeon",
-      "image": "assets/doctor_5.jpg",
+      "image": "assets/images/doctor/doctor_5.jpg",
       "available": "Available Now",
       "fee": "1000tk",
-      "feeTitle": "Consultation Fee"
+      "feeTitle": "Consultation Fee",
     },
     {
       "name": "Dr. Emily Carter",
       "specialty": "Neurologist",
-      "image": "assets/doctor_6.jpg",
+      "image": "assets/images/doctor/doctor_6.jpg",
       "available": "Available Now",
       "fee": "1000tk",
-      "feeTitle": "Consultation Fee"
+      "feeTitle": "Consultation Fee",
     },
   ];
   BrainDoctorListScreen({super.key});
@@ -25,7 +26,9 @@ class BrainDoctorListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Brain Specialists"), backgroundColor: Colors.purple),
+        title: Text("Brain Specialists"),
+        backgroundColor: Colors.purple,
+      ),
       backgroundColor: Color(0xFFEDEDF4),
       body: ListView.builder(
         itemCount: doctors.length,
@@ -53,8 +56,10 @@ class BrainDoctorListScreen extends StatelessWidget {
               ),
               title: Text(
                 doctor["name"]!,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               subtitle: Text(doctor["specialty"]!),
             ),
@@ -69,7 +74,9 @@ class BrainDoctorListScreen extends StatelessWidget {
                         Text(
                           doctor["available"]!,
                           style: const TextStyle(
-                              color: Colors.green, fontWeight: FontWeight.bold),
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         const SizedBox(width: 10),
                         const Text("• Video Consult"),
@@ -84,12 +91,20 @@ class BrainDoctorListScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
-                    //TODO: notepad bookappoinment screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => BookAppointmentScreen(
+                              doctorName: doctor["name"]!,
+                              doctorSpecialty: doctor["specialty"]!,
+                              doctorImage: doctor["image"]!,
+                            ),
+                      ),
+                    );
                   },
                   child: const Text("Book Appointment >"),
                 ),

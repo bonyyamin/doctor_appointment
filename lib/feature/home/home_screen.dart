@@ -21,7 +21,7 @@ class HomeScreenState extends State<HomeScreen> {
   // Screens for Bottom Navigation
   final List<Widget> _screens = [
     HomeScreenContent(), // Home page content
-    AppointmentsScreen(),
+    AppointmentScreen(),
     MessageScreen(),
     ProfileScreen(),
   ];
@@ -68,32 +68,32 @@ class HomeScreenContentState extends State<HomeScreenContent> {
     {
       "name": "Dr. Selkon Kane",
       "specialty": "Heart",
-      "image": "assets/doctor_1.jpg"
+      "image": "assets/images/doctor/doctor_1.jpg"
     },
     {
       "name": "Dr. Watson Mushef",
       "specialty": "Heart",
-      "image": "assets/doctor_2.jpg"
+      "image": "assets/images/doctor/doctor_2.jpg"
     },
     {
       "name": "Dr. Emily Smith",
       "specialty": "Dental",
-      "image": "assets/doctor_3.jpg"
+      "image": "assets/images/doctor/doctor_3.jpg"
     },
     {
       "name": "Dr. Robert Brown",
       "specialty": "Dental",
-      "image": "assets/doctor_4.jpg"
+      "image": "assets/images/doctor/doctor_4.jpg"
     },
     {
       "name": "Dr. Alice Johnson",
       "specialty": "Brain",
-      "image": "assets/doctor_5.jpg"
+      "image": "assets/images/doctor/doctor_5.jpg"
     },
     {
       "name": "Dr. Michael Lee",
       "specialty": "Brain",
-      "image": "assets/doctor_6.jpg"
+      "image": "assets/images/doctor/doctor_6.jpg"
     },
   ];
 
