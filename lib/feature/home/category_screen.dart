@@ -1,12 +1,12 @@
+import 'package:doctor_appointment/feature/doctor/brain_doctor_list_screen.dart';
+import 'package:doctor_appointment/feature/doctor/dental_doctor_list_screen.dart';
+import 'package:doctor_appointment/feature/doctor/heart_doctor_list_screen.dart';
 import 'package:flutter/material.dart';
-import '../doctor/brain_doctor_list_screen.dart';
-import '../doctor/dental_doctor_list_screen.dart';
-import '../doctor/heart_doctor_list_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
   final Function(String) onCategorySelected;
 
-  CategoryScreen({required this.onCategorySelected});
+  const CategoryScreen({super.key, required this.onCategorySelected});
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +66,7 @@ class CategoryScreen extends StatelessWidget {
                   onCategorySelected(category["title"]!);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => category["screen"],
-                    ),
+                    MaterialPageRoute(builder: (context) => category["screen"]),
                   );
                 },
               ),
