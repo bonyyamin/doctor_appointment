@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DoctorCardWidget extends StatelessWidget {
+class CardWidget extends StatelessWidget {
   final String name;
   final String specialty;
   final String imagePath;
 
-  const DoctorCardWidget({super.key, 
+  const CardWidget({super.key,
     required this.name,
     required this.specialty,
     required this.imagePath,
@@ -14,7 +14,7 @@ class DoctorCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
+      width: 300,
       margin: EdgeInsets.only(right: 16),
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(

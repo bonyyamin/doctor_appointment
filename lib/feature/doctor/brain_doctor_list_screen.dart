@@ -1,117 +1,40 @@
-import 'package:doctor_appointment/feature/appointments/book_appointment/book_appointment_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:doctor_appointment/models/doctor.dart';
+import 'package:doctor_appointment/widgets/doctor_card.dart';
 
 class BrainDoctorListScreen extends StatelessWidget {
-  final List<Map<String, String>> doctors = [
-    {
+  final List<Doctor> doctors = [
+    Doctor.fromMap({
       "name": "Dr. Michael Lee",
       "specialty": "Neurosurgeon",
       "image": "assets/images/doctor/doctor_5.jpg",
       "available": "Available Now",
       "fee": "1000tk",
       "feeTitle": "Consultation Fee",
-    },
-    {
+    }),
+    Doctor.fromMap({
       "name": "Dr. Emily Carter",
       "specialty": "Neurologist",
       "image": "assets/images/doctor/doctor_6.jpg",
       "available": "Available Now",
       "fee": "1000tk",
       "feeTitle": "Consultation Fee",
-    },
+    }),
   ];
+
   BrainDoctorListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Brain Specialists"),
+        title: const Text("Brain Specialists"),
         backgroundColor: Colors.purple,
       ),
-      backgroundColor: Color(0xFFEDEDF4),
+      backgroundColor: const Color(0xFFEDEDF4),
       body: ListView.builder(
         itemCount: doctors.length,
-        itemBuilder: (context, index) {
-          final doctor = doctors[index];
-          return _buildDoctorCard(context, doctor);
-        },
-      ),
-    );
-  }
-
-  Widget _buildDoctorCard(BuildContext context, Map<String, String> doctor) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-      elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              leading: CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage(doctor["image"]!),
-              ),
-              title: Text(
-                doctor["name"]!,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle: Text(doctor["specialty"]!),
-            ),
-            const Divider(),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          doctor["available"]!,
-                          style: const TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        const Text("• Video Consult"),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(doctor["fee"]!),
-                        Text(doctor["feeTitle"]!),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder:
-                            (context) => BookAppointmentScreen(
-                              doctorName: doctor["name"]!,
-                              doctorSpecialty: doctor["specialty"]!,
-                              doctorImage: doctor["image"]!,
-                            ),
-                      ),
-                    );
-                  },
-                  child: const Text("Book Appointment >"),
-                ),
-              ],
-            ),
-          ],
-        ),
+        itemBuilder: (context, index) => DoctorCard(doctor: doctors[index], imagePath: '',),
       ),
     );
   }

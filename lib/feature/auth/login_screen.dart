@@ -14,7 +14,6 @@ class LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +21,11 @@ class LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /// App Logo or Illustration
-              Center(child: Image.asset('assets/logo.png', height: 100)),
-              SizedBox(height: 30),
+              Center(child: Image.asset('assets/logo.png', height: 150)),
+              SizedBox(height: 50),
 
               /// Welcome Text
               Text(
@@ -105,7 +104,10 @@ class LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(vertical: 16),
                   minimumSize: Size(double.infinity, 50),
                 ),
-                child: Text("Login", style: TextStyle(fontSize: 18)),
+                child: Text(
+                  "Login",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
               SizedBox(height: 20),
 

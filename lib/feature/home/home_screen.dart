@@ -1,10 +1,11 @@
 import 'package:doctor_appointment/feature/appointments/appointment_screen.dart';
+import 'package:doctor_appointment/feature/home/widgets/card_widget.dart';
+import 'package:doctor_appointment/feature/home/widgets/current_date.dart';
 import 'package:doctor_appointment/feature/message/message_screen.dart';
 import 'package:doctor_appointment/feature/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'category_screen.dart'; // Import the category screen
 import 'widgets/category_item.dart';
-import 'widgets/doctor_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,7 +46,9 @@ class HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today), label: "Appointments"),
+            icon: Icon(Icons.calendar_today),
+            label: "Appointments",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.message), label: "Messages"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
@@ -68,40 +71,41 @@ class HomeScreenContentState extends State<HomeScreenContent> {
     {
       "name": "Dr. Selkon Kane",
       "specialty": "Heart",
-      "image": "assets/images/doctor/doctor_1.jpg"
+      "image": "assets/images/doctor/doctor_1.jpg",
     },
     {
       "name": "Dr. Watson Mushef",
       "specialty": "Heart",
-      "image": "assets/images/doctor/doctor_2.jpg"
+      "image": "assets/images/doctor/doctor_2.jpg",
     },
     {
       "name": "Dr. Emily Smith",
       "specialty": "Dental",
-      "image": "assets/images/doctor/doctor_3.jpg"
+      "image": "assets/images/doctor/doctor_3.jpg",
     },
     {
       "name": "Dr. Robert Brown",
       "specialty": "Dental",
-      "image": "assets/images/doctor/doctor_4.jpg"
+      "image": "assets/images/doctor/doctor_4.jpg",
     },
     {
       "name": "Dr. Alice Johnson",
       "specialty": "Brain",
-      "image": "assets/images/doctor/doctor_5.jpg"
+      "image": "assets/images/doctor/doctor_5.jpg",
     },
     {
       "name": "Dr. Michael Lee",
       "specialty": "Brain",
-      "image": "assets/images/doctor/doctor_6.jpg"
+      "image": "assets/images/doctor/doctor_6.jpg",
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> filteredDoctors = doctors
-        .where((doctor) => doctor["specialty"] == selectedCategory)
-        .toList();
+    List<Map<String, String>> filteredDoctors =
+        doctors
+            .where((doctor) => doctor["specialty"] == selectedCategory)
+            .toList();
 
     return SafeArea(
       child: Padding(
@@ -113,10 +117,48 @@ class HomeScreenContentState extends State<HomeScreenContent> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.menu, size: 28),
-                CircleAvatar(
-                    radius: 22,
-                    backgroundImage: AssetImage('assets/profile.png')),
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/profile.png'),
+                    ),
+                    SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Hello, Bony Yamin",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        CurrentDate(),
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 4,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+
+                  child: IconButton(
+                    icon: Icon(Icons.notifications, color: Colors.blue),
+                    onPressed: () {},
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 20),
@@ -140,21 +182,25 @@ class HomeScreenContentState extends State<HomeScreenContent> {
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                          hintText: "Search for doctor",
-                          border: InputBorder.none),
+                        hintText: "Search for doctor",
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                   IconButton(
-                      icon: Icon(Icons.search, color: Colors.blue),
-                      onPressed: () {}),
+                    icon: Icon(Icons.search, color: Colors.blue),
+                    onPressed: () {},
+                  ),
                 ],
               ),
             ),
             SizedBox(height: 24),
 
             /// Categories
-            Text("Category",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              "Category",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 12),
 
             Row(
@@ -165,13 +211,14 @@ class HomeScreenContentState extends State<HomeScreenContent> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CategoryScreen(
-                          onCategorySelected: (category) {
-                            setState(() {
-                              selectedCategory = category;
-                            });
-                          },
-                        ),
+                        builder:
+                            (context) => CategoryScreen(
+                              onCategorySelected: (category) {
+                                setState(() {
+                                  selectedCategory = category;
+                                });
+                              },
+                            ),
                       ),
                     );
                   },
@@ -180,16 +227,21 @@ class HomeScreenContentState extends State<HomeScreenContent> {
                       Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 4,
-                                  spreadRadius: 2),
-                            ]),
-                        child:
-                            Icon(Icons.category, size: 28, color: Colors.blue),
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 4,
+                              spreadRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          Icons.category,
+                          size: 28,
+                          color: Colors.blue,
+                        ),
                       ),
                       SizedBox(height: 6),
                       Text("See All", style: TextStyle(fontSize: 14)),
@@ -197,51 +249,58 @@ class HomeScreenContentState extends State<HomeScreenContent> {
                   ),
                 ),
                 CategoryItemWidget(
-                    icon: Icons.favorite,
-                    title: "Heart",
-                    selectedCategory: selectedCategory,
-                    onCategorySelected: (category) {
-                      setState(() {
-                        selectedCategory = category;
-                      });
-                    }),
+                  icon: Icons.favorite,
+                  title: "Heart",
+                  selectedCategory: selectedCategory,
+                  onCategorySelected: (category) {
+                    setState(() {
+                      selectedCategory = category;
+                    });
+                  },
+                ),
                 CategoryItemWidget(
-                    icon: Icons.medical_services,
-                    title: "Dental",
-                    selectedCategory: selectedCategory,
-                    onCategorySelected: (category) {
-                      setState(() {
-                        selectedCategory = category;
-                      });
-                    }),
+                  icon: Icons.medical_services,
+                  title: "Dental",
+                  selectedCategory: selectedCategory,
+                  onCategorySelected: (category) {
+                    setState(() {
+                      selectedCategory = category;
+                    });
+                  },
+                ),
                 CategoryItemWidget(
-                    icon: Icons.psychology,
-                    title: "Brain",
-                    selectedCategory: selectedCategory,
-                    onCategorySelected: (category) {
-                      setState(() {
-                        selectedCategory = category;
-                      });
-                    }),
+                  icon: Icons.psychology,
+                  title: "Brain",
+                  selectedCategory: selectedCategory,
+                  onCategorySelected: (category) {
+                    setState(() {
+                      selectedCategory = category;
+                    });
+                  },
+                ),
               ],
             ),
             SizedBox(height: 24),
 
             /// Specialist List
-            Text("$selectedCategory Specialists",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              "$selectedCategory Specialists",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 12),
 
-            Expanded(
+            SizedBox(
+              height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: filteredDoctors.length,
                 itemBuilder: (context, index) {
                   final doctor = filteredDoctors[index];
-                  return DoctorCardWidget(
-                      name: doctor["name"]!,
-                      specialty: doctor["specialty"]!,
-                      imagePath: doctor["image"]!);
+                  return CardWidget(
+                    name: doctor["name"]!,
+                    specialty: doctor["specialty"]!,
+                    imagePath: doctor["image"]!,
+                  );
                 },
               ),
             ),

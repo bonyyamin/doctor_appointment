@@ -30,16 +30,16 @@ class SignupScreenState extends State<SignupScreen> {
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /// App Logo or Illustration
               Center(
                 child: Image.asset(
                   'assets/logo.png',
-                  height: 100,
+                  height: 150,
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 50),
 
               /// Welcome Text
               Text(
@@ -128,7 +128,7 @@ class SignupScreenState extends State<SignupScreen> {
                   padding: EdgeInsets.symmetric(vertical: 16),
                   minimumSize: Size(double.infinity, 50),
                 ),
-                child: Text("Sign Up", style: TextStyle(fontSize: 18)),
+                child: Text("Sign Up", style: TextStyle(fontSize: 18, color: Colors.white)),
               ),
               SizedBox(height: 20),
 
