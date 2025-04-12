@@ -5,7 +5,8 @@ class CardWidget extends StatelessWidget {
   final String specialty;
   final String imagePath;
 
-  const CardWidget({super.key,
+  const CardWidget({
+    super.key,
     required this.name,
     required this.specialty,
     required this.imagePath,
@@ -54,18 +55,12 @@ class CardWidget extends StatelessWidget {
                     SizedBox(height: 4),
                     Text(
                       specialty,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white70,
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.white70),
                     ),
                   ],
                 ),
               ),
-              CircleAvatar(
-                radius: 32,
-                backgroundImage: AssetImage(imagePath),
-              ),
+              CircleAvatar(radius: 32, backgroundImage: AssetImage(imagePath)),
             ],
           ),
         ],
